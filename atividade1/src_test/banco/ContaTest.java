@@ -24,7 +24,7 @@ public class ContaTest extends TestCase {
 		Conta c1 = new Conta ("1234", 100);
 		Conta c2 = new Conta ("12345", 0);
 		
-		System.out.println("Teste de transferência...");
+		System.out.println("Teste de transferência com valores dentro do padrão...");
 		
 		try {
 			
@@ -33,7 +33,7 @@ public class ContaTest extends TestCase {
 			assertEquals(c1.getSaldo(),50.0);
 			assertEquals(c2.getSaldo(),50.0);
 			
-			System.out.println("Sucesso!");
+			System.out.println("- Sucesso!");
 
 		} catch (OperacaoIlegalException ex) {
 			System.out.println("Não foi possivel realizar a trasferência");
@@ -42,27 +42,52 @@ public class ContaTest extends TestCase {
 	}
 	
 	/**
-	 * Método para verificar se a exceção esta correta. 
+	 * Verifica se a exceção esta correta para valores negativos.
 	 * @throws OperacaoIlegalException
 	 */
-	public void testTransferenciaEx () throws OperacaoIlegalException {
+	public void testTransferenciaNegativa () throws OperacaoIlegalException {
 		
 		Conta c1 = new Conta ("1234", 100);
 		Conta c2 = new Conta ("12345", 0);
 		
-		System.out.println("Teste de exceção...");
+		System.out.println("Teste de transferência com valores negativos...");
 		
 		try {
 			
 			c1.transferir(c2, -1);
 			
-			assertEquals(c1.getSaldo(),50.0);
-			assertEquals(c2.getSaldo(),50.0);
+			assertEquals(c1.getSaldo(),99.0);
+			assertEquals(c2.getSaldo(),1.0);
 			
 			fail("Exceção não foi lançada!");
 			
 		} catch (OperacaoIlegalException ex) {
-			System.out.println("Exceção lançada com sucesso: Não foi possivel realizar a trasferência!");
+			System.out.println("- Não é possivel realizar transferência com valores negativos!");
+		}
+	}
+	
+	/**
+	 * Verifica se a exceção esta correta para transferência com valores acima do que há na conta. 
+	 * @throws OperacaoIlegalException
+	 */
+	public void testTransferenciaAcima () throws OperacaoIlegalException {
+		
+		Conta c1 = new Conta ("1234", 100);
+		Conta c2 = new Conta ("12345", 0);
+		
+		System.out.println("Teste de transferência com valores maiores que o da conta...");
+		
+		try {
+			
+			c1.transferir(c2, 150);
+			
+			assertEquals(c1.getSaldo(),99.0);
+			assertEquals(c2.getSaldo(),1.0);
+			
+			fail("Exceção não foi lançada!");
+			
+		} catch (OperacaoIlegalException ex) {
+			System.out.println("- Não há valor suficiente para realizar a transferência!");
 		}
 	}
 }
