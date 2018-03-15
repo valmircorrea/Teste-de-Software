@@ -1,0 +1,9 @@
+Nesta atividade você deve:
+
+1. Implementar o método abaixio na classe Conta.java:
+
+double transferir (Conta c, double val) OperacaoIlegalException
+
+2. Criar metodos de teste JUnit para testar estes métodos.
+
+PS: LEMBRAR DE TESTAR O LANCAMENTO DA EXCECAO.
