@@ -1,0 +1,92 @@
+PROBLEMA 1: ​ Um aplicativo desenvolvido para o relógio da APPLE checa o risco de AVC com
+base na temperatura corporal (medida por um sensor em Celsius) e na frequência cardíaca (medida em
+quantidade de batimentos por minuto). O método abaixo representa a funcionalidade principal deste
+aplicativo.
+
+public class AVCRisk {
+    /*
+    O método retorna o risco do usuário do relógio desenvolver um AVC:
+
+    - Retorna FALSE se: temperatura <= 39 || card <=118
+    - Retorna TRUE se: temperatura > 39 && card > 118
+
+    Caso os sensores apresentam algum problema eles podem enviar um dado NEGATIVO este método
+    lança a exceção checada chamada InvalidArgumentException.
+    */
+    public boolean checkRisk (double temp, int card) throws InvalidArgumentException {
+    ...
+    }
+}
+
+PROBLEMA 2: ​ Considere o metodo abaixo que converte temperaturas de Celsius para Fahrenheit e
+vice versa. O codigo desta classe foi adicionado no SIGAA.
+
+public class Temperature Transformer{
+    public Temperature convert(Temperature temp) throws Exception{
+    ...
+    }
+}
+
+Responda as questões abaixo para os 2 problemas acima (1 de cada vez :))
+
+    1. Como você pode particionar o domínio de entrada do método acima? Em outras palavras quais
+    classes de equivalência podem ser definidas para este método?
+        R: Podemos particionar o domínio de entrada dos problemas anteriores nas seguintes
+           classes de equivalencia:
+
+        Problema 1:
+            Seja x = Temperatura corporal e y = Frequência cardíaca.
+
+                Domínio de entrada para "x":
+                    * x < 20
+                    * 20 < x <= 39
+                    * 39 > x >= 42
+                    * x > 42
+
+                    Fonte sobre temperatura corporal: https://mundoestranho.abril.com.br/saude/qual-e-o-nivel-maximo-e-o-minimo-que-a-temperatura-do-corpo-pode-atingir/
+
+                Domínio de entrada para "y":
+                    * x < 30
+                    * 30 <= y <= 118
+                    * 118 > y >= 180
+                    * y > 180
+
+                    Fonte sobrefrequência cardíaca: https://mundoestranho.abril.com.br/saude/qual-e-o-limite-maximo-e-o-minimo-para-os-batimentos-cardiacos/
+
+        Problema 2:
+            Seja t = temperatura em graus Celsius.
+                Domínio de entrada para "t":
+
+                    * t < -273
+                    * -273 <= t <= 100
+                    * t > 100
+
+    2. Liste os casos de teste são necessários para cobrir todas as classes.
+        R: Para listar o casos de testem, podemos utilizar o critério de Análise de Valor Limite.
+
+        Problema 1:
+            Seja x = Temperatura corporal e y = Frequência cardíaca.
+                In : x = 42 e y = 122
+                Out: x = 30 e y = 110
+                On : x = 40 e y = 119
+                Off: x = 39 e y = 118
+
+        Prblema 2:
+            Seja t = temperatura em graus Celsius.
+                In : t = 90
+                Out: t = -280
+                On : t = -273
+                Off: t = -274
+
+    3. Os testes que você criou acima atendem ao critério de Análise de Valor Limite? Caso não
+    atendam quais seriam os novos casos de testes que você precisaria criar para atender este critério
+    e por quê?
+        R: Sim, atendem. Pelo fato de ser um método muito interessante e bastante usado, foi o primeiro
+           que pensei em testar.
+
+    4. Construa uma Classe de Testes Parametrizados JUnit para os casos de testes definidos acima
+    (considerando apenas os casos de testes que não devem lançar exceção).
+        * Código no arquivo .zip
+    5. Construa uma Classe de Testes Parametrizados JUnit agora considerando parâmetros que lancem
+    exceção.
+        * Código no arquivo .zip

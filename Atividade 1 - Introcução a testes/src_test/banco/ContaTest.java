@@ -1,9 +1,5 @@
 package banco;
 
-//São para os testes com @Test
-import static org.junit.Assert.*;
-
-
 import junit.framework.TestCase;
 
 public class ContaTest extends TestCase {

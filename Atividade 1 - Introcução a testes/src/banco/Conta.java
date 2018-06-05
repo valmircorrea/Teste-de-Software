@@ -3,12 +3,12 @@ package banco;
 
 public class Conta{
 
-	private String codigo;
+	//private String codigo;
 	private double saldo = 0;
 
 	public Conta (String p_id, double p_saldo) { 
 		this.saldo = p_saldo;
-	    this.codigo = p_id;
+	  //  this.codigo = p_id;
 	}
 	
 	public double getSaldo() {
